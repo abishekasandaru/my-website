@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main text animation */
+        .text-container {
+            position: relative;
+            z-index: 100;
+        }
+
+        .love-text {
+            font-size: 80px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: textGlow 2s ease-in-out infinite, textScale 3s ease-in-out infinite;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 20px;
+            padding: 20px 40px;
+        }
+
+        .love-text:hover {
+            transform: scale(1.15);
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 60px rgba(255, 105, 180, 0.9);
+            background: rgba(255, 105, 180, 0.2);
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 105, 180, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 105, 180, 0.8);
+            }
+        }
+
+        @keyframes textScale {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Heart animation */
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .heart {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: red;
+            clip-path: polygon(50% 95%, 90% 35%, 100% 10%, 75% 0%, 50% 30%, 25% 0%, 0% 10%, 10% 35%);
+            animation: floatHeart 3s ease-in infinite;
+            opacity: 0.8;
+            z-index: 6;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+            background: #ff1744;
+        }
+
+        .heart:nth-child(2) {
+            left: 80%;
+            top: 30%;
+            animation-delay: 0.5s;
+            background: #ff5252;
+            width: 50px;
+            height: 50px;
+        }
+
+        .heart:nth-child(3) {
+            left: 20%;
+            top: 60%;
+            animation-delay: 1s;
+            background: #ff6e40;
+            width: 35px;
+            height: 35px;
+        }
+
+        .heart:nth-child(4) {
+            left: 85%;
+            top: 50%;
+            animation-delay: 1.5s;
+            background: #ff5252;
+            width: 45px;
+            height: 45px;
+        }
+
+        .heart:nth-child(5) {
+            left: 50%;
+            top: 10%;
+            animation-delay: 2s;
+            background: #ff1744;
+            width: 30px;
+            height: 30px;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle animation */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkleAnimation 1.5s ease-out infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 4;
+        }
+
+        .sparkle:nth-child(6) {
+            left: 25%;
+            top: 40%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(7) {
+            left: 75%;
+            top: 45%;
+            animation-delay: 0.3s;
+        }
+
+        .sparkle:nth-child(8) {
+            left: 40%;
+            top: 25%;
+            animation-delay: 0.6s;
+        }
+
+        .sparkle:nth-child(9) {
+            left: 60%;
+            top: 70%;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes sparkleAnimation {
+            0% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) translateY(-30px);
+                opacity: 0;
+            }
+        }
+
+        /* Bubble animation */
+        .bubble {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: bubbleFloat 4s ease-in infinite;
+            z-index: 2;
+        }
+
+        .bubble:nth-child(10) {
+            width: 50px;
+            height: 50px;
+            left: 30%;
+            bottom: -50px;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(11) {
+            width: 70px;
+            height: 70px;
+            left: 60%;
+            bottom: -70px;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(12) {
+            width: 40px;
+            height: 40px;
+            left: 45%;
+            bottom: -40px;
+            animation-delay: 2s;
+        }
+
+        @keyframes bubbleFloat {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Pulse effect */
+        .pulse {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgba(255, 105, 180, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s ease-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Falling stars */
+        .star {
+            position: absolute;
+            color: #fff;
+            font-size: 20px;
+            animation: starFall 3s ease-in infinite;
+            opacity: 0.9;
+            z-index: 3;
+        }
+
+        .star:nth-child(13) {
+            left: 20%;
+            top: 0%;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(14) {
+            left: 70%;
+            top: 0%;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(15) {
+            left: 45%;
+            top: 0%;
+            animation-delay: 1s;
+        }
+
+        @keyframes starFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Pulse background effect -->
+        <div class="pulse"></div>
+
+        <!-- Animated text -->
+        <div class="text-container">
+            <a href="zaizai.html" class="love-text">I Love You ❤</a>
+        </div>
+
+        <!-- All animations container -->
+        <div class="hearts-container">
+            <!-- Floating hearts -->
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+
+            <!-- Sparkles -->
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+
+            <!-- Bubbles -->
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+
+            <!-- Falling stars -->
+            <div class="star">✨</div>
+            <div class="star">⭐</div>
+            <div class="star">✨</div>
+        </div>
+    </div>
+</body>
+</html>
